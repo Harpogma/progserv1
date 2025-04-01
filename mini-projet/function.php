@@ -25,17 +25,39 @@ function getPets() {
 }
 
 function getPet($name) {
-    return "Getting pet with name '$name'.<br>";
+    global $pets;
+    if (array_key_exists($name, $pets)) {
+        return $pets[$name];
+    } else {
+        return false;
+    }
 }
 
 function addPet($name, $age) {
-    return "Adding $name, who is $age years old.<br>";
+    global $pets;
+    $pets[$name] = ['name' => $name, 'age' => $age];
+    return $pets[$name];
 }
 
 function updatePet($name, $age) {
-    return "Updating pet with name '$name' to be $age years old.<br>";
+    global $pets;
+    if (array_key_exists($name, $pets)) {
+        $pet = $pets[$name];
+        $pet['age'] = $age;
+        $pets[$name] = $pet;
+        return $pet;
+    } else {
+        return false;
+    }
 }
 
 function removePet($name) {
-    return "Removing pet with name '$name'.<br>";
+    global $pets;
+    if (array_key_exists($name, $pets)) {
+        unset($pets[$name]);
+    } else {
+        return false;
+    }
 }
+
+$pets = [];

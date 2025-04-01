@@ -1,17 +1,48 @@
 <?php
-
 require 'function.php';
 
+// Crée Caramel, un chat de 3 ans
 addPet("Caramel", 3);
-addPet("Rex", 8);
-addPet("Tweety", 1);
-addPet("Godzilla", 4);
-getPet("Rex");
-updatePet("Rex", 9);
-removePet("Tweety");
 
+// Crée Rex, un chien de 8 ans
+addPet("Rex", 8);
+
+// Crée Tweety, un oiseau de 1 an
+addPet("Tweety", 1);
+
+// Crée Godzilla, un lézard de 4 ans
+addPet("Godzilla", 4);
+
+// Récupère l'animal nommé Rex
+$rex = getPet("Rex");
+
+// Affiche les propriétés de Rex
+print_r($rex);
+echo "<br>";
+
+// Met à jour l'âge de Rex à 9 ans
+$rex = updatePet("Rex", 9);
+
+// Affiche les propriétés de Rex
+print_r($rex);
+echo "<br>";
+
+// Supprime Tweety... :(
+$success = removePet("Tweety");
+
+// Affiche si la suppression a réussi
+var_dump($success);
+echo "<br>";
+
+// On essaie de récupérer Tweety
+$tweety = getPet("Tweety");
+
+// Affiche si Tweety a été trouvé
+var_dump($tweety);
+echo "<br>";
+
+// Récupère tous les animaux
 $pets = getPets();
-print_r($pets);
 ?>
 
 <head>
