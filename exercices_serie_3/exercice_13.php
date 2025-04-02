@@ -16,21 +16,23 @@ $people = [
         'age' => 35,
         'city' => 'Chicago',
     ],
-] ;
+];
 
 function ageCompare($a, $b) {
-    return $a < $b ? $a : $b;
+    if ($a['age'] < $b['age']) {
+        return -1;
+    } else if ($b < $a) {
+        return 1;
+    } else {
+        return 0;
+    }
 };
 
-echo $people[0]['age'] . "<br>";
-echo $people[1]['age'] . "<br>";
-echo ageCompare($people[0]['age'], $people[1]['age']) . "<br>";
-
-
-//$newArray = usort($people, ageCompare($people[0]['age'], $people[1]['age']));
-$newArray = usort($people, "ageCompare");
+usort($people, "ageCompare");
 
 for ($i = 0; $i < count($people); $i++) {
-    print_r($newArray);
+    echo $people[$i]['name'] . "<br>";
+    echo $people[$i]['age'] . "<br>";
+    echo $people[$i]['city'] . "<br>";
+    echo "<br>";
 };
-
